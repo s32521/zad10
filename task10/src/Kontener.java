@@ -1,4 +1,4 @@
-public class Kontener {
+public abstract class Kontener {
     private double masaLadunku;
     private double wysokosc;
     private double wagaKont;
@@ -38,6 +38,10 @@ public class Kontener {
         return maxLadunku;
     }
 
+    public void setMasaLadunku(double masaLadunku) {
+        this.masaLadunku = masaLadunku;
+    }
+
     public String oproznienieLadunku() {
         double nowaMasaLadunku;
         if(masaLadunku == 0) {
@@ -48,15 +52,8 @@ public class Kontener {
         return "Opróżniono ładunek o wadzę:" + masaLadunku + ", nowa masa to:"+ nowaMasaLadunku;
     }
 
-    public String zaladowanieLadunku() throws OverfillException {
-        double nowaMasaLadunku;
-        if(masaLadunku > maxLadunku) {
-            throw new OverfillException("Brak miejsca");
-        }else {
-            nowaMasaLadunku = masaLadunku;
-        }
-        return "Załadowano ładunek o wadze " + nowaMasaLadunku;
-    }
+    public abstract String zaladowanieLadunku(double masa, boolean niebezpieczny) throws OverfillException;
+
 
     public String toString(){
         return "Masa ładunku " + masaLadunku + " kg, wysokość " + wysokosc + " cm, waga kontenera: " + wagaKont + "kg, głebokość " + glebokosc + "cm, numer seryjny " + wygenerujNr()+ "\n";

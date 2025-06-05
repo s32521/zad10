@@ -15,5 +15,12 @@ public class Main {
         Gaz gaz1 = new Gaz(500,40,207,200,600,20);
         System.out.println(gaz1.oproznienieLadunku());
         System.out.println(gaz1.zaladowanieLadunku(500, true));
+        System.out.println(gaz1.toString());
+
+        Chlodniczy chlodniczy1 = new Chlodniczy(90,40,207,200,600,"Banany", 20);
+        System.out.println(chlodniczy1.oproznienieLadunku());
+        System.out.println(chlodniczy1.zaladowanieLadunku(90, "Banany"));
+        System.out.println(chlodniczy1.toString());
     }
+
 }

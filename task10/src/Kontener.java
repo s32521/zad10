@@ -21,6 +21,7 @@ public abstract class Kontener {
         this.wagaKont = wagaKont;
         this.glebokosc = glebokosc;
         this.maxLadunku = maxLadunku;
+        this.numerSer = wygenerujNr();
     }
     public double getMasaLadunku() {
         return masaLadunku;
@@ -40,6 +41,10 @@ public abstract class Kontener {
 
     public void setMasaLadunku(double masaLadunku) {
         this.masaLadunku = masaLadunku;
+    }
+
+    public String getNumerSer() {
+        return numerSer;
     }
 
     public String oproznienieLadunku() {

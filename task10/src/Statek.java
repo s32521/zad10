@@ -30,4 +30,58 @@ public class Statek {
         return "Kontener o nazwie" + nazwa + "został dodany.";
     }
 
+    public String usunKontener(String numer) throws OverfillException {
+        for (Kontener k : kontenery) {
+            if (k.getNumerSer().equals(numer)) {
+                kontenery.remove(k);
+                return "Usunięto kontener " + numer;
+            }
+        }
+        throw new OverfillException("Nie znaleziono kontenera do usunięcia.");
+    }
+
+    public String rozladujKontener(String numer) throws OverfillException {
+        for (Kontener k : kontenery) {
+            if (k.getNumerSer().equals(numer)) {
+                return k.oproznienieLadunku();
+            }
+        }
+        throw new OverfillException("Nie znaleziono kontenera");
+    }
+
+    public String zastapKontener(String numer, Kontener nowy) throws OverfillException {
+        for (int i = 0; i < kontenery.size(); i++) {
+            if (kontenery.get(i).getNumerSer().equals(numer)) {
+                kontenery.set(i, nowy);
+                return "Zastąpiono kontener " + numer + " nowym: " + nowy.getNumerSer();
+            }
+        }
+        throw new OverfillException("Nie znaleziono kontenera");
+    }
+
+    public String przeniesKontener(Statek cel, String numer) throws OverfillException {
+        for (Kontener k : kontenery) {
+            if (k.getNumerSer().equals(numer)) {
+                cel.dodajKontener(k);
+                kontenery.remove(k);
+                return "Przeniesiono kontener " + numer + " na statek " + cel.nazwa;
+            }
+        }
+        throw new OverfillException("Nie znaleziono kontenera");
+    }
+
+    public void wypiszKontenery() {
+        System.out.println("Kontenery na statku " + nazwa + ":");
+        for (Kontener k : kontenery) {
+            System.out.println(k.toString());
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Statek: " + nazwa + ", prędkość max: " + maxPredkosc + " w, maks kontenerów: " + maxIleKontenery + ", maks waga: " + maxWaga + " kg, obecnie załadowanych: " + kontenery.size();
+    }
+
+
+
 }

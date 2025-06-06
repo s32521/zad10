@@ -21,6 +21,22 @@ public class Main {
         System.out.println(chlodniczy1.oproznienieLadunku());
         System.out.println(chlodniczy1.zaladowanieLadunku(90, "Banany"));
         System.out.println(chlodniczy1.toString());
-    }
 
+        Statek statek = new Statek("Fajny", 5, 25.0, 10000.0);
+
+        System.out.println(statek.dodajKontener(kontener1));
+        System.out.println(statek.dodajKontener(kontener2));
+        System.out.println(statek.dodajKontener(gaz1));
+        System.out.println(statek.dodajKontener(chlodniczy1));
+
+        System.out.println(statek.toString());
+        statek.wypiszKontenery();
+
+        System.out.println(statek.rozladujKontener(kontener1.getNumerSer()));
+
+        System.out.println(statek.usunKontener(gaz1.getNumerSer()));
+
+        statek.wypiszKontenery();
+    }
 }
+
